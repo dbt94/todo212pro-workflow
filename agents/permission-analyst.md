@@ -85,3 +85,15 @@ Recommendations:
 - Keep `"$defaults"` in every `autoMode` list you touch.
 - Never recommend auto-approving destructive operations.
 - Present all recommendations for user approval. Do not edit settings files yourself.
+
+## Optional: System 1 risk suggestions
+
+Only when `system_one` is enabled (see `references/system-one-classifiers.md`). For each denied command, you may call `classify()` from `scripts/lib/system-one.js` with a `choice` question:
+
+```json
+{ "risk": { "type": "choice", "instructions": "What is the risk class of this command?", "criteria": { "read-only": "reads files or state, changes nothing", "local-write": "changes local files, branches, or processes the session created", "outward": "publishes, pushes, comments, deploys, or sends data outside this machine", "destructive": "deletes or overwrites data, history, or infrastructure" } } }
+```
+
+- Show the class and its probability next to the recommendation, labeled as a suggestion.
+- Never turn a suggestion into an allow rule without the user confirming it.
+- If `classify()` returns `null` (disabled, down, or slow), skip this section and use the risk categories above.

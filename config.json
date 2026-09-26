@@ -44,12 +44,12 @@
     "architecture": "opus",
     "debugging": "opus",
     "long_horizon": "fable",
-    "verified": "2026-07",
+    "verified": "2026-09",
     "current_models": {
       "haiku": "claude-haiku-4-5",
       "sonnet": "claude-sonnet-5",
-      "opus": "claude-opus-4-8",
-      "fable": "claude-fable-5"
+      "opus": "claude-opus-5-5",
+      "fable": "claude-fable-5-1"
     },
     "effort": {
       "quick_fixes": "low",
@@ -60,5 +60,17 @@
       "long_horizon": "high",
       "grunt_subagent": "low"
     }
+  },
+  "reread_tracker": {
+    "block": false
+  },
+  "system_one": {
+    "enabled": false,
+    "provider": "laya",
+    "laya_url": "http://127.0.0.1:8791/v1/systemone",
+    "laya_model": "multilingual",
+    "jev_model": "jev-1.13.0",
+    "timeout_ms": 150,
+    "correction_threshold": 0.9
   }
 }
